@@ -58,7 +58,7 @@ st.set_page_config(page_title="Teto · preço teto de FIIs", page_icon=":materia
                    initial_sidebar_state="expanded")
 estilo.aplicar_css()
 
-AUTORES = "Olivier Menezes Vasconcelos e Lucas Cordeiro Frade Ribeiro Oliveira"
+AUTORES = "Olivier Menezes Vasconcelos e Lucas Oliveira Frade Ribeiro Cordeiro"
 PASTA = os.path.dirname(os.path.abspath(__file__))
 ARQ_CONFIG = os.path.join(PASTA, "config_fiis.json")
 PERIODOS = {"1 ano": 1, "2 anos": 2, "3 anos": 3, "5 anos": 5, "10 anos": 10}

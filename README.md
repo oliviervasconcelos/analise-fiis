@@ -1,7 +1,7 @@
 # Teto: preço teto e risco de fundos imobiliários
 
 **UFMG · FACE · CAD 167 Administração Financeira · Trabalho 1**
-Dupla: Olivier Menezes Vasconcelos e Lucas Cordeiro Frade Ribeiro Oliveira
+Dupla: Olivier Menezes Vasconcelos e Lucas Oliveira Frade Ribeiro Cordeiro
 
 Aplicação web que calcula, para cada fundo imobiliário (FII) da B3, o **preço teto**: o maior preço que ainda faz o fundo render mais do que um título do Tesouro atrelado à inflação, somado a um prêmio pelo risco do fundo.
 
