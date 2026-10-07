@@ -1,0 +1,71 @@
+# =============================================================================
+# Tema "Teto": paleta e tipografia do site
+#   Verde-tinta  #1C3530  -> texto, painel lateral, sinal favorável
+#   Marfim       #F2EDE3  -> fundo (papel)
+#   Terracota    #B4532A  -> destaque: ações, foco, sinal de atenção
+# Os demais tons são variações dessas três cores.
+# =============================================================================
+[theme]
+base = "light"
+primaryColor = "#B4532A"
+backgroundColor = "#F2EDE3"
+secondaryBackgroundColor = "#E9E2D4"
+textColor = "#1C3530"
+linkColor = "#B4532A"
+linkUnderline = false
+borderColor = "#D8CFBD"
+showWidgetBorder = true
+baseRadius = "0.3rem"
+buttonRadius = "0.3rem"
+baseFontSize = 15
+font = "IBM Plex Sans:https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+headingFont = "Fraunces:https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap"
+headingFontWeights = [500, 500, 500, 600, 600, 600]
+headingFontSizes = ["2.75rem", "1.75rem", "1.35rem", "1.1rem", "1rem", "0.9rem"]
+metricValueFontSize = "1.8rem"
+metricValueFontWeight = 500
+dataframeBorderColor = "#E2DACA"
+dataframeHeaderBackgroundColor = "#E9E2D4"
+dataframeHeaderTextColor = "#1C3530"
+# Cores semânticas do Streamlit (alertas, deltas) remapeadas para a paleta
+greenColor = "#2F5D50"
+greenBackgroundColor = "#DDE3DC"
+greenTextColor = "#1C3530"
+redColor = "#B4532A"
+redBackgroundColor = "#F1DCCF"
+redTextColor = "#7E3517"
+orangeColor = "#B4532A"
+orangeBackgroundColor = "#F1DCCF"
+orangeTextColor = "#7E3517"
+yellowColor = "#B4532A"
+yellowBackgroundColor = "#F1DCCF"
+yellowTextColor = "#7E3517"
+blueColor = "#1C3530"
+blueBackgroundColor = "#DDE3DC"
+blueTextColor = "#1C3530"
+violetColor = "#7E968C"
+violetBackgroundColor = "#DDE3DC"
+violetTextColor = "#1C3530"
+grayColor = "#8A9792"
+chartCategoricalColors = ["#1C3530", "#B4532A", "#7E968C", "#D9A486", "#4D6B62", "#7E3517", "#B8C5BE", "#9C8A72"]
+
+[theme.sidebar]
+backgroundColor = "#1C3530"
+secondaryBackgroundColor = "#25443D"
+textColor = "#EDE6D8"
+borderColor = "#3A5A52"
+primaryColor = "#D9774B"
+linkColor = "#E9A37F"
+
+[client]
+# Esconde as ferramentas de desenvolvedor do Streamlit (Deploy, Rerun, menu)
+toolbarMode = "minimal"
+
+[server]
+headless = false
+# Não observa os arquivos do código: sem avisos de "Rerun / Always rerun".
+# Ao editar o código, reinicie o site (feche e abra o iniciar_site.bat).
+fileWatcherType = "none"
+
+[browser]
+gatherUsageStats = false

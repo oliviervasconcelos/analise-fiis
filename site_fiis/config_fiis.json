@@ -1,0 +1,187 @@
+{
+  "ipca": 0.0439,
+  "ipca_mais": 0.0836,
+  "aliquota_ir": 0.15,
+  "premio_base": 0.01,
+  "peso_fatores": 1.0,
+  "modo_premio": "Automático",
+  "modo_ipca": "Automático",
+  "fator_ipca": {
+    "Papel": 1.0,
+    "Híbrido": 0.5,
+    "FoF": 0.5,
+    "Tijolo": 0.0,
+    "Indefinido": 0.5
+  },
+  "minha_lista": [
+    {
+      "FII": "GTWR11",
+      "Tipo (manual)": null,
+      "Prêmio (%)": 2.0,
+      "Ajuste IPCA (%)": 0.0,
+      "IPCA cheio": false,
+      "Div. 12m manual (R$)": null
+    },
+    {
+      "FII": "TRXF11",
+      "Tipo (manual)": null,
+      "Prêmio (%)": 3.0,
+      "Ajuste IPCA (%)": 0.0,
+      "IPCA cheio": false,
+      "Div. 12m manual (R$)": null
+    },
+    {
+      "FII": "GGRC11",
+      "Tipo (manual)": null,
+      "Prêmio (%)": 3.0,
+      "Ajuste IPCA (%)": 0.0,
+      "IPCA cheio": false,
+      "Div. 12m manual (R$)": null
+    },
+    {
+      "FII": "RECT11",
+      "Tipo (manual)": null,
+      "Prêmio (%)": 6.0,
+      "Ajuste IPCA (%)": 0.0,
+      "IPCA cheio": false,
+      "Div. 12m manual (R$)": null
+    },
+    {
+      "FII": "GARE11",
+      "Tipo (manual)": "Tijolo",
+      "Prêmio (%)": 3.0,
+      "Ajuste IPCA (%)": 0.0,
+      "IPCA cheio": false,
+      "Div. 12m manual (R$)": null
+    },
+    {
+      "FII": "PMLL11",
+      "Tipo (manual)": null,
+      "Prêmio (%)": 2.0,
+      "Ajuste IPCA (%)": 0.0,
+      "IPCA cheio": false,
+      "Div. 12m manual (R$)": null
+    },
+    {
+      "FII": "XPLG11",
+      "Tipo (manual)": null,
+      "Prêmio (%)": 2.0,
+      "Ajuste IPCA (%)": 0.0,
+      "IPCA cheio": false,
+      "Div. 12m manual (R$)": null
+    },
+    {
+      "FII": "XPML11",
+      "Tipo (manual)": null,
+      "Prêmio (%)": 2.0,
+      "Ajuste IPCA (%)": 0.0,
+      "IPCA cheio": false,
+      "Div. 12m manual (R$)": null
+    },
+    {
+      "FII": "VGHF11",
+      "Tipo (manual)": null,
+      "Prêmio (%)": 3.0,
+      "Ajuste IPCA (%)": 2.2,
+      "IPCA cheio": false,
+      "Div. 12m manual (R$)": null
+    },
+    {
+      "FII": "VGIA11",
+      "Tipo (manual)": "Papel",
+      "Prêmio (%)": 3.0,
+      "Ajuste IPCA (%)": 5.0,
+      "IPCA cheio": false,
+      "Div. 12m manual (R$)": null
+    },
+    {
+      "FII": "HGLG11",
+      "Tipo (manual)": null,
+      "Prêmio (%)": 1.0,
+      "Ajuste IPCA (%)": 0.0,
+      "IPCA cheio": false,
+      "Div. 12m manual (R$)": null
+    },
+    {
+      "FII": "BTHF11",
+      "Tipo (manual)": "Híbrido",
+      "Prêmio (%)": 2.0,
+      "Ajuste IPCA (%)": 2.2,
+      "IPCA cheio": false,
+      "Div. 12m manual (R$)": null
+    },
+    {
+      "FII": "VISC11",
+      "Tipo (manual)": null,
+      "Prêmio (%)": 2.0,
+      "Ajuste IPCA (%)": 0.0,
+      "IPCA cheio": false,
+      "Div. 12m manual (R$)": null
+    },
+    {
+      "FII": "KNCR11",
+      "Tipo (manual)": null,
+      "Prêmio (%)": 1.0,
+      "Ajuste IPCA (%)": 0.0,
+      "IPCA cheio": true,
+      "Div. 12m manual (R$)": null
+    },
+    {
+      "FII": "BTLG11",
+      "Tipo (manual)": null,
+      "Prêmio (%)": 2.0,
+      "Ajuste IPCA (%)": 0.0,
+      "IPCA cheio": false,
+      "Div. 12m manual (R$)": null
+    },
+    {
+      "FII": "KNRI11",
+      "Tipo (manual)": null,
+      "Prêmio (%)": 1.0,
+      "Ajuste IPCA (%)": 0.0,
+      "IPCA cheio": false,
+      "Div. 12m manual (R$)": null
+    },
+    {
+      "FII": "KNSC11",
+      "Tipo (manual)": null,
+      "Prêmio (%)": 1.0,
+      "Ajuste IPCA (%)": 0.0,
+      "IPCA cheio": true,
+      "Div. 12m manual (R$)": null
+    },
+    {
+      "FII": "IRIM11",
+      "Tipo (manual)": null,
+      "Prêmio (%)": 4.0,
+      "Ajuste IPCA (%)": 0.0,
+      "IPCA cheio": true,
+      "Div. 12m manual (R$)": null
+    },
+    {
+      "FII": "PVBI11",
+      "Tipo (manual)": null,
+      "Prêmio (%)": 2.0,
+      "Ajuste IPCA (%)": 0.0,
+      "IPCA cheio": false,
+      "Div. 12m manual (R$)": null
+    },
+    {
+      "FII": "HGRU11",
+      "Tipo (manual)": null,
+      "Prêmio (%)": 2.0,
+      "Ajuste IPCA (%)": 0.0,
+      "IPCA cheio": false,
+      "Div. 12m manual (R$)": null
+    },
+    {
+      "FII": "MXRF11",
+      "Tipo (manual)": null,
+      "Prêmio (%)": 2.0,
+      "Ajuste IPCA (%)": 0.0,
+      "IPCA cheio": true,
+      "Div. 12m manual (R$)": null
+    }
+  ],
+  "autores": ""
+}
