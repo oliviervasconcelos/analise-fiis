@@ -47,7 +47,7 @@ CATEGORICAS = [TINTA, TERRACOTA, SALVIA, TERRA_CLARA, "#4D6B62", TERRA_ESCURA, S
 
 # Cada tipo de fundo tem uma cor fixa em todo o site
 CORES_TIPO = {"Papel": TINTA, "Tijolo": TERRACOTA, "Híbrido": SALVIA, "FoF": TERRA_CLARA,
-              "Indefinido": TINTA_45}
+              "Indefinido": "#C4BBA8"}   # tom de papel mais escuro: neutro, distinto do sálvia
 
 FONTE_TITULO = "Fraunces, Georgia, serif"
 FONTE_CORPO = "'IBM Plex Sans', system-ui, sans-serif"

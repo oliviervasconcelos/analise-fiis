@@ -58,6 +58,7 @@ st.set_page_config(page_title="Teto · preço teto de FIIs", page_icon=":materia
                    initial_sidebar_state="expanded")
 estilo.aplicar_css()
 
+AUTORES = "Olivier Menezes Vasconcelos e Lucas Cordeiro Frade Ribeiro Oliveira"
 PASTA = os.path.dirname(os.path.abspath(__file__))
 ARQ_CONFIG = os.path.join(PASTA, "config_fiis.json")
 PERIODOS = {"1 ano": 1, "2 anos": 2, "3 anos": 3, "5 anos": 5, "10 anos": 10}
@@ -115,7 +116,7 @@ MODO_AUTO, MODO_MANUAL = "Automático", "Minha planilha"
 def ler_config():
     padrao = {"ipca": 0.0439, "ipca_mais": 0.0836, "aliquota_ir": 0.15, "premio_base": 0.01,
               "peso_fatores": 1.0, "modo_premio": MODO_AUTO, "modo_ipca": MODO_AUTO,
-              "fator_ipca": calculos.FATOR_IPCA_PADRAO, "autores": "", "minha_lista": []}
+              "fator_ipca": calculos.FATOR_IPCA_PADRAO, "minha_lista": []}
     try:
         with open(ARQ_CONFIG, encoding="utf-8") as f:
             padrao.update(json.load(f))
@@ -135,7 +136,6 @@ def salvar_config():
            "premio_base": s.premio_base / 100, "peso_fatores": s.peso_fatores,
            "modo_premio": s.modo_premio, "modo_ipca": s.modo_ipca,
            "fator_ipca": {t: s[f"fator_{t}"] / 100 for t in TIPOS},
-           "autores": s.autores_salvo,
            "minha_lista": params[COLUNAS_PARAM].to_dict("records")}
     with open(ARQ_CONFIG, "w", encoding="utf-8") as f:
         json.dump(cfg, f, ensure_ascii=False, indent=2)
@@ -167,7 +167,6 @@ if "params_base" not in st.session_state:
     s.params_editados = base.copy()
     s.versao_editor = 0
     s.versao_tabela = 0
-    s.autores_salvo = cfg.get("autores", "")
 
 
 # =============================================================================
@@ -399,7 +398,7 @@ def cor_variacao(v):
     return f"color: {TINTA if v > 0 else TERRACOTA}"
 
 
-CORES_TIPO_TEXTO = {**CORES_TIPO, "FoF": "#A8693F", "Híbrido": "#557167"}
+CORES_TIPO_TEXTO = {**CORES_TIPO, "FoF": "#A8693F", "Híbrido": "#557167", "Indefinido": TINTA_45}
 
 
 def cor_tipo(v):
@@ -1025,18 +1024,28 @@ def pagina_relatorio():
                      ("Salvo em", "relatorios/<small>na pasta do site, com uma planilha CSV</small>"),
                      ("Premissas", f"{pct(TAXAS['equivalente'])}<small>ganho real exigido, base</small>")])
 
-    # O nome da dupla fica guardado fora do widget para não se perder ao trocar de página
-    if "autores" not in st.session_state:
-        st.session_state.autores = st.session_state.autores_salvo
-
-    def _guardar_autores():
-        st.session_state.autores_salvo = st.session_state.autores
+    # Fundos com preço e preço teto calculáveis (sem dividendos o teto seria zero)
+    calculaveis = TABELA[(TABELA["teto"] > 0) & (TABELA["preco"] > 0)]
+    liq_opcoes = {"Qualquer": 0, "R$ 100 mil": 1e5, "R$ 500 mil": 5e5, "R$ 1 mi": 1e6}
 
     with st.container(border=True):
-        c1, c2 = st.columns([3, 6])
-        c1.text_input("Dupla", key="autores", on_change=_guardar_autores, placeholder="Nome 1 e Nome 2")
-        escolhidos = c2.multiselect("Fundos do relatório", TODOS, default=MINHA_LISTA, max_selections=40,
-                                    placeholder="Escolha de 2 a 40 fundos")
+        c1, c2 = st.columns([4, 5], vertical_alignment="bottom")
+        universo = c1.segmented_control("Fundos do relatório", ["Minha lista", "Todos os fundos", "Escolher fundos"],
+                                        default="Minha lista") or "Minha lista"
+        if universo == "Minha lista":
+            escolhidos = MINHA_LISTA
+            c2.caption(f"{len(escolhidos)} fundos da sua lista.")
+        elif universo == "Todos os fundos":
+            liq_min = liq_opcoes[c2.selectbox("Liquidez mínima por dia", list(liq_opcoes), index=0,
+                                              help="Fundos quase sem negociação costumam ter preços e dividendos "
+                                                   "pouco confiáveis.")]
+            escolhidos = calculaveis.loc[calculaveis["liquidez"].fillna(0) >= liq_min, "fii"].tolist()
+        else:
+            escolhidos = st.multiselect("Fundos", TODOS, default=MINHA_LISTA, placeholder="Escolha os fundos")
+        validos, excluidos = relatorio.filtrar(TABELA[TABELA["fii"].isin(escolhidos)])
+        st.caption(f"{len(validos)} fundos entrarão no relatório"
+                   + (f"; {len(excluidos)} ficam de fora por yield fora da faixa de 1% a 40% (dados suspeitos)."
+                      if len(excluidos) else "."))
         gerar = st.button("Gerar relatório", type="primary")
 
     if gerar:
@@ -1046,10 +1055,11 @@ def pagina_relatorio():
         t = TABELA[TABELA["fii"].isin(escolhidos)]
         s = st.session_state
         premissas = {"ipca_mais": s.ipca_mais / 100, "ir": s.ir / 100, "modo_premio": MODO_PREMIO,
-                     "modo_ipca": MODO_IPCA, "premio_base": s.premio_base / 100, "peso": s.peso_fatores}
-        universo = "minha lista" if set(escolhidos) == set(MINHA_LISTA) else "seleção"
+                     "modo_ipca": MODO_IPCA, "premio_base": s.premio_base / 100, "peso": s.peso_fatores,
+                     "fator_ipca": FATOR_IPCA}
+        universo = {"Minha lista": "minha lista", "Todos os fundos": "todos os fundos"}.get(universo, "seleção")
         try:
-            pagina = relatorio.gerar_html(t, TAXAS, IPCA, premissas, HORA_COTACAO, s.autores_salvo, universo)
+            pagina = relatorio.gerar_html(t, TAXAS, IPCA, premissas, HORA_COTACAO, AUTORES, universo)
         except ValueError as erro:
             nota(str(erro), atencao=True)
             return
@@ -1063,16 +1073,6 @@ def pagina_relatorio():
             f.write(pagina)
         with open(base + ".csv", "wb") as f:
             f.write(planilha)
-
-        # Lembra o nome da dupla para as próximas vezes
-        try:
-            with open(ARQ_CONFIG, encoding="utf-8") as f:
-                cfg = json.load(f)
-            cfg["autores"] = s.autores_salvo
-            with open(ARQ_CONFIG, "w", encoding="utf-8") as f:
-                json.dump(cfg, f, ensure_ascii=False, indent=2)
-        except (OSError, json.JSONDecodeError):
-            pass
         s.ultimo_relatorio = {"html": pagina, "csv": planilha, "caminho": base + ".html"}
 
     ultimo = st.session_state.get("ultimo_relatorio")

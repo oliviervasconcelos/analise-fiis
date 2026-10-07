@@ -21,10 +21,10 @@ Requisitos: Python 3.9 ou mais recente e conexão com a internet.
 **Windows:** dê dois cliques em `site_fiis/iniciar_site.bat`. Ele instala as bibliotecas e abre o site no navegador.
 
 **Qualquer sistema:**
+Na pasta raiz do projeto (onde está este README):
 ```bash
-cd site_fiis
-pip install -r requirements.txt
-streamlit run app.py
+pip install -r site_fiis/requirements.txt
+streamlit run site_fiis/app.py
 ```
 
 O site abre em http://localhost:8501. A primeira carga leva cerca de 30 segundos, porque baixa as cotações de cerca de 400 fundos.
@@ -59,12 +59,8 @@ site_fiis/
   estilo.py           visual (cores, tipografia, gráficos)
   config_fiis.json    premissas e lista de fundos acompanhados
   dados_salvos/       cópias locais das fontes de dados
-analise_risco_retorno_fii.py   complemento: análise de risco e retorno por linha de comando
+  relatorios/         relatórios gerados pelo site (criada no primeiro relatório)
 ```
-
-### Complemento: análise de risco e retorno
-
-`analise_risco_retorno_fii.py` aprofunda o tema risco e retorno para uma carteira de FIIs (CAPM, Alfa de Jensen, fronteira eficiente de Markowitz). Para rodar: `pip install -r requirements.txt` e `python analise_risco_retorno_fii.py`.
 
 ---
 Ferramenta educacional; não é recomendação de investimento.

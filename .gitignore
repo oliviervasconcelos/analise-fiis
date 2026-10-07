@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Relatórios gerados pelo site (cada execução cria novos)
+site_fiis/relatorios/
+
+# Sistema e editores
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Segredos locais do Streamlit (nunca versionar)
+.streamlit/secrets.toml

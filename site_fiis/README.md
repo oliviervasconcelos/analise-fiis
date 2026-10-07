@@ -1,10 +1,10 @@
 # Teto: site de preço teto de FIIs
 
 ## Como abrir
-Dê dois cliques em `iniciar_site.bat`, ou rode:
+Dê dois cliques em `iniciar_site.bat`, ou rode na **pasta raiz do projeto** (um nível acima desta), onde fica a pasta `.streamlit` com o tema:
 ```bash
-pip install -r requirements.txt
-streamlit run app.py
+pip install -r site_fiis/requirements.txt
+streamlit run site_fiis/app.py
 ```
 O site abre em http://localhost:8501. A primeira carga leva uns 30 segundos, porque baixa as cotações de cerca de 400 FIIs.
 
